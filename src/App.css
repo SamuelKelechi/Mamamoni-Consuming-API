@@ -7,7 +7,6 @@
 }
 .Cardwrapper{
     width: 90%;
-    height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -15,7 +14,7 @@
 
 .Card{
     width: 300px;
-    height: 200px;
+    height: auto;
     background-color: whitesmoke;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.24)0px 3px 8px;
@@ -24,6 +23,7 @@
     justify-content: center;
     align-items: center;
     margin: 10px;
+    padding: 10px 0 10px 0;
 }
 
 .Header-Contain{
@@ -42,7 +42,7 @@
     align-items: center;
 }
 
-navs{
+.navs{
     display: flex;
     list-style: none;
     width: 50%;
@@ -98,8 +98,18 @@ button{
 width: 100px;
 height: 40px;
 border-radius: 5px;
-background-color: whitesmoke;
-border: 1px solid whitesmoke;
+background-color: green;
+border: 1px solid green;
+color: white;
 margin-top: 20px;
 }
+.Delete-button{
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    background-color: red;
+    border: 1px solid red;
+    color: white;
+    margin-top: 20px;
+    }
     

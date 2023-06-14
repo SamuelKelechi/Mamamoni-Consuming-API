@@ -1,6 +1,8 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import './App.css'
+import Moment from 'moment'
 import {FaBars, FaTimes} from "react-icons/fa"
+import axios from'axios'
 
 function App() {
 // State for our Toggle function
@@ -16,7 +18,12 @@ function App() {
   const [avatar, setAvatar] = useState(null)
 
 // Creating state for our JSON/Database
+  const Time = Date.now()
+
   const [state, setState] = useState([])
+
+  
+  console.log(Time)
 
 // Function for Toggle 
   const handClick = () => {
@@ -56,17 +63,26 @@ const Delete = (id) => {
   setState(removeItem)
 }
 
+useEffect(() => {
+  localStorage.setItem('store', JSON.stringify(state))
+}, [state])
+
+useEffect(() => {
+  const saveItems = JSON.parse(localStorage.getItem('store'));
+  setState(saveItems);
+}, []);
+
   return (
     <div className="Container">
       <div className="Header-Contain">
         <div className="Header-Contain-Wrapper">
           <h1>LOGO</h1>
-          <navs>
+          <div className="navs">
             <li>HOME</li>
             <li>ABOUT</li>
             <li>SERVICES</li>
             <li>CONTACT</li>
-          </navs>
+          </div>
 
           <div className="Icon" onClick={handClick}>
             {click ? <FaTimes/> : (<FaBars/>)}
@@ -94,14 +110,14 @@ const Delete = (id) => {
         </div>
       </div>
       
-      <wrapper className= "Cardwrapper">
+      <div className= "Cardwrapper">
         
 {/* Mapping Datas to Card */}
-        {state.map((el) =>{
+        {state && state.map((el) =>{
           return(
           <div className="Card" key={el.id}>
 
-              <p>{el.time}</p>
+              <p>Posted {Moment(el.time).fromNow()}</p>
               <img src={el.image} alt="avatar" style={{width:'50px'}}/>
 
               <span>{el.id}</span>
@@ -109,13 +125,13 @@ const Delete = (id) => {
               <span>{el.sex}</span>
               <span>{el.course}</span>
               <span>{el.age}</span>
-              <button onClick={() => {
+              <button  className="Delete-button" onClick={() => {
                 Delete(el.id) 
                 }}>Delete</button>
           </div>
           )
         })} 
-      </wrapper>
+      </div>
     </div>
   );
 }
