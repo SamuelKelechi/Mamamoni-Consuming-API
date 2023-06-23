@@ -1,0 +1,79 @@
+p{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: blueviolet; */
+}
+.wrapper{
+    /* height: ; */
+    width: 90%;
+    display: flex;
+    margin-top: 3%;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* background-color: peru; */
+}
+
+.card{
+    height: 400px; 
+    width: 250px;
+    /* background-color: yellow; */
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+.up{
+    width:100% ;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.imagehold{
+    width: 80%;
+    height: 95%;
+}
+
+.down{
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(227, 19, 137); */
+}
+
+.downhold{
+    height: 95%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(227, 19, 137);
+}
+
+.buttnhold{
+    height: 60px;
+    display: flex;
+    justify-content:flex-end;
+    width: 100%;
+    background-color: teal;
+    flex: 1;
+}
+.butt{
+    background-color:peru ;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+  
+}
