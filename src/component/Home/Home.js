@@ -9,6 +9,9 @@ const Home = () => {
   const [courses, setCourses] = useState("")
   const [ages, setAges] = useState("")
 
+// Setting state to add age
+  const [totalAge, setTotalAge] = useState(0)
+
 // State for image upload
   const [avatar, setAvatar] = useState(null)
 
@@ -32,7 +35,7 @@ const Home = () => {
       names : names,
       sex : sexs,
       course : courses,
-      age : ages,
+      ages : parseInt(ages),
       image : avatar,
       time : Date.now()
     }
@@ -50,6 +53,16 @@ const Delete = (id) => {
   const removeItem = state.filter((el) => el.id !== id)
   setState(removeItem)
 }
+
+// Writing the add age function inside the useEffect
+useEffect(() => {
+    const calculateTotalAge = () => {
+      const newTotalAge = state.reduce((acc, el) => acc + el.ages, 0);
+      setTotalAge(newTotalAge);
+    };
+
+    calculateTotalAge();
+  }, [state]);
 
 useEffect(() => {
   const state = JSON.parse(localStorage.getItem('state'));
@@ -84,9 +97,11 @@ useEffect(() => {
           <button onClick={Post}>POST</button>
         </div>
       </div>
+
+{/* Showing the total age here... */}
+      Total Age: {totalAge}
       
       <div className= "Cardwrapper">
-        
 {/* Mapping Datas to Card */}
         {state && state.map((el) =>{
           return(
@@ -99,7 +114,7 @@ useEffect(() => {
               <span>{el.name}</span>
               <span>{el.sex}</span>
               <span>{el.course}</span>
-              <span>{el.age}</span>
+              <span>{el.ages}</span>
               <button  className="Delete-button" onClick={() => {
                 Delete(el.id) 
                 }}>Delete</button>
